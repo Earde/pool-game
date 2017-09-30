@@ -1,0 +1,22 @@
+{
+  "name": "EP",
+  "description": "pool game",
+  "main": "main",
+  "keywords": [
+    "pool",
+    "game"
+  ],
+  "authors": [
+    "Earde Bearda"
+  ],
+  "license": "ep",
+  "homepage": "home",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
