@@ -9325,7 +9325,7 @@
 					var vpWidth = _shadowMapSize.x;
 					var vpHeight = _shadowMapSize.y;
 
-					// These viewports map a ball-map onto a 2D texture with the
+					// These viewports map a balls-map onto a 2D texture with the
 					// following orientation:
 					//
 					//  xzXZ
@@ -9413,7 +9413,7 @@
 				_renderer.setRenderTarget( shadowMap );
 				_renderer.clear();
 
-				// render shadow map for each ball face (if omni-directional) or
+				// render shadow map for each balls face (if omni-directional) or
 				// run a single pass if not
 
 				for ( var face = 0; face < faceCount; face ++ ) {
@@ -18549,7 +18549,7 @@
 
 			if ( texture.image && textureProperties.__image__webglTextureCube ) {
 
-				// ball texture
+				// balls texture
 
 				_gl.deleteTexture( textureProperties.__image__webglTextureCube );
 
@@ -19038,7 +19038,7 @@
 		function setupDepthTexture( framebuffer, renderTarget ) {
 
 			var isCube = ( renderTarget && renderTarget.isWebGLRenderTargetCube );
-			if ( isCube ) throw new Error( 'Depth Texture with ball render targets is not supported' );
+			if ( isCube ) throw new Error( 'Depth Texture with balls render targets is not supported' );
 
 			_gl.bindFramebuffer( _gl.FRAMEBUFFER, framebuffer );
 
@@ -23198,7 +23198,7 @@
 
 					if ( ! warned ) {
 
-						console.warn( "THREE.WebGLRenderer.setTextureCube: don't use ball render targets as textures. Use their .texture property instead." );
+						console.warn( "THREE.WebGLRenderer.setTextureCube: don't use balls render targets as textures. Use their .texture property instead." );
 						warned = true;
 
 					}
@@ -23214,7 +23214,7 @@
 
 					// CompressedTexture can have Array in image :/
 
-					// this function alone should take care of ball textures
+					// this function alone should take care of balls textures
 					textures.setTextureCube( texture, slot );
 
 				} else {
@@ -24772,7 +24772,7 @@
 		this.image = { width: width, height: height };
 		this.mipmaps = mipmaps;
 
-		// no flipping for ball textures
+		// no flipping for balls textures
 		// (also flipping doesn't work for compressed textures )
 
 		this.flipY = false;
@@ -36492,8 +36492,8 @@
 	} );
 
 	/**
-	 * Camera for rendering ball maps
-	 *	- renders scene into axis-aligned ball
+	 * Camera for rendering balls maps
+	 *	- renders scene into axis-aligned balls
 	 *
 	 * @author alteredq / http://alteredqualia.com/
 	 */

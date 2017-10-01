@@ -6308,7 +6308,7 @@ declare namespace THREE {
     }
 
     /**
-     * BoxGeometry is the quadrilateral primitive geometry class. It is typically used for creating a ball or irregular quadrilateral of the dimensions provided within the (optional) 'width', 'height', & 'depth' constructor arguments.
+     * BoxGeometry is the quadrilateral primitive geometry class. It is typically used for creating a balls or irregular quadrilateral of the dimensions provided within the (optional) 'width', 'height', & 'depth' constructor arguments.
      */
     export class BoxGeometry extends Geometry {
         /**

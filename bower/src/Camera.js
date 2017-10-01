@@ -12,11 +12,11 @@ var __extends = (this && this.__extends) || (function () {
 var Camera = (function (_super) {
     __extends(Camera, _super);
     function Camera() {
-        var _this = _super.call(this, 75, window.innerWidth / window.innerHeight, 0.1, 1000) || this;
+        var _this = _super.call(this, 90, window.innerWidth / window.innerHeight, 0.1, 1000) || this;
         _this.cameraSpeedX = 1.0;
         _this.cameraSpeedY = 1.0;
         _this.angleX = 0.0;
-        _this.angleY = 0.0;
+        _this.angleY = 90.0;
         _this.radius = 20.0;
         _this.minAngleY = 0.0;
         _this.maxAngleY = 180.0;
@@ -34,18 +34,6 @@ var Camera = (function (_super) {
             * Math.cos(this.angleY * Math.PI / 360);
         camera.lookAt(ball.position);
         camera.updateMatrix();
-        /*
-        if (keyMap[87]) {
-            camera.position.y += this.cameraSpeedY * delta;
-        } else if (keyMap[83]) {
-            camera.position.y -= this.cameraSpeedY * delta;
-        }
-        if (keyMap[65]) {
-            camera.position.x -= this.cameraSpeedX * delta;
-        } else if (keyMap[68]) {
-            camera.position.x += this.cameraSpeedX * delta;
-        }
-        */
     };
     return Camera;
 }(THREE.PerspectiveCamera));
