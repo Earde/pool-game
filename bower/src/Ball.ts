@@ -1,21 +1,33 @@
 ///<reference path="../typings/index.d.ts" />
 
 class Ball extends THREE.Mesh{
-    speed: number = 5.0;
-    angle: number = 16;
-    radius: number = 0.5;
+    public velocity: THREE.Vector2;
 
-    constructor(r: number) {
-        super(new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial( { color: 0xffffff } ));
+    private angle: number = 1;
+    private radius: number = 0.5;
+
+    constructor(r: number, color: number) {
+        super(new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial( { color: color } ));
         this.radius = r;
+        this.velocity = new THREE.Vector2(0.0, 0.0);
         this.position.x = 0;
         this.position.y = 0;
         this.position.z = 0;
     }
 
+    getAngle() {
+        return this.angle;
+    }
+
+    setAngle(a: number, speed: number) {
+        this.angle = a;
+        this.velocity.x = speed * Math.cos( this.angle * Math.PI / 180 );
+        this.velocity.y = speed * Math.sin( this.angle * Math.PI / 180 );
+    }
+
     update(delta) {
-        this.position.x += this.speed * Math.cos( this.angle * Math.PI / 180 ) * delta;
-        this.position.z += this.speed * Math.sin( this.angle * Math.PI / 180 ) * delta;
+        this.position.x += this.velocity.x * delta;
+        this.position.z += this.velocity.y * delta;
     }
 
     getBox() {

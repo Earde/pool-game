@@ -11,20 +11,28 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Ball = (function (_super) {
     __extends(Ball, _super);
-    function Ball(r) {
-        var _this = _super.call(this, new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial({ color: 0xffffff })) || this;
-        _this.speed = 5.0;
-        _this.angle = 16;
+    function Ball(r, color) {
+        var _this = _super.call(this, new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial({ color: color })) || this;
+        _this.angle = 1;
         _this.radius = 0.5;
         _this.radius = r;
+        _this.velocity = new THREE.Vector2(0.0, 0.0);
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
         return _this;
     }
+    Ball.prototype.getAngle = function () {
+        return this.angle;
+    };
+    Ball.prototype.setAngle = function (a, speed) {
+        this.angle = a;
+        this.velocity.x = speed * Math.cos(this.angle * Math.PI / 180);
+        this.velocity.y = speed * Math.sin(this.angle * Math.PI / 180);
+    };
     Ball.prototype.update = function (delta) {
-        this.position.x += this.speed * Math.cos(this.angle * Math.PI / 180) * delta;
-        this.position.z += this.speed * Math.sin(this.angle * Math.PI / 180) * delta;
+        this.position.x += this.velocity.x * delta;
+        this.position.z += this.velocity.y * delta;
     };
     Ball.prototype.getBox = function () {
         return new THREE.Box3(new THREE.Vector3(this.position.x - this.radius, this.position.y - this.radius, this.position.z - this.radius), new THREE.Vector3(this.position.x + this.radius, this.position.y + this.radius, this.position.z + this.radius));
