@@ -18,8 +18,8 @@ var Camera = (function (_super) {
         _this.angleX = 0.0;
         _this.angleY = 90.0;
         _this.radius = 20.0;
-        _this.minAngleY = 0.0;
-        _this.maxAngleY = 180.0;
+        _this.minAngleY = 15;
+        _this.maxAngleY = 150.0;
         _this.position.z = 5;
         return _this;
     }

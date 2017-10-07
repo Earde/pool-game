@@ -6,8 +6,8 @@ class Camera extends THREE.PerspectiveCamera{
     angleX: number = 0.0;
     angleY: number = 90.0;
     radius: number = 20.0;
-    minAngleY = 0.0;
-    maxAngleY = 180.0;
+    minAngleY = 15;
+    maxAngleY = 150.0;
 
     constructor() {
         super(90, window.innerWidth / window.innerHeight, 0.1, 1000);

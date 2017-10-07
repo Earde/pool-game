@@ -12,14 +12,16 @@ var __extends = (this && this.__extends) || (function () {
 var Ball = (function (_super) {
     __extends(Ball, _super);
     function Ball(r, color) {
-        var _this = _super.call(this, new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial({ color: color })) || this;
-        _this.angle = 1;
-        _this.radius = 0.5;
+        var _this = _super.call(this, new THREE.SphereGeometry(r), new THREE.MeshPhongMaterial({ color: color })) || this;
+        _this.deceleration = 75;
         _this.radius = r;
         _this.velocity = new THREE.Vector2(0.0, 0.0);
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
+        _this.angle = 0.0;
+        _this.castShadow = true;
+        _this.receiveShadow = true;
         return _this;
     }
     Ball.prototype.getAngle = function () {
@@ -33,6 +35,15 @@ var Ball = (function (_super) {
     Ball.prototype.update = function (delta) {
         this.position.x += this.velocity.x * delta;
         this.position.z += this.velocity.y * delta;
+        var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
+        if (length > delta * this.deceleration) {
+            var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
+            this.velocity.x -= friction.x * delta;
+            this.velocity.y -= friction.y * delta;
+        }
+        else {
+            this.velocity = new THREE.Vector2(0, 0);
+        }
     };
     Ball.prototype.getBox = function () {
         return new THREE.Box3(new THREE.Vector3(this.position.x - this.radius, this.position.y - this.radius, this.position.z - this.radius), new THREE.Vector3(this.position.x + this.radius, this.position.y + this.radius, this.position.z + this.radius));
@@ -52,12 +63,11 @@ var Ball = (function (_super) {
     Ball.prototype.intersectsWithBox = function (box) {
         var min = this.getBox().min;
         var max = this.getBox().max;
-        if (box.max.x <= min.x || box.min.x >= max.x ||
-            box.max.y <= min.y || box.min.y >= max.y ||
-            box.max.z <= min.z || box.min.z >= max.z) {
-            return false;
+        if (min.x < box.max.x && max.x > box.min.x
+            && min.z < box.max.z && max.z > box.min.z) {
+            return true;
         }
-        return true;
+        return false;
     };
     return Ball;
 }(THREE.Mesh));

@@ -1,0 +1,72 @@
+//elastic ball collision
+                    //push ball away from each other so they don't collide immediately again
+                    var difference = new THREE.Vector2(balls[b].position.x - balls[b1].position.x, balls[b].position.z - balls[b1].position.z);
+                    var length = Math.sqrt(difference.x * difference.x + difference.y * difference.y);
+                    var translation = ((balls[b].radius + balls[b1].radius) - length) / length;
+                    var mtd = new THREE.Vector2(difference.x * translation, difference.y * translation);
+                    balls[b].position.x += mtd.x * 0.5;
+                    balls[b].position.z += mtd.y * 0.5;
+                    balls[b1].position.x -= mtd.x * 0.5;
+                    balls[b1].position.z -= mtd.y * 0.5;
+                    var v = new THREE.Vector2(balls[b].velocity.x - balls[b1].velocity.x, balls[b].velocity.y - balls[b1].velocity.y);
+                    var mtdLength = Math.sqrt(mtd.x * mtd.x + mtd.y * mtd.y);
+                    var mtdNormal = new THREE.Vector2(mtd.x / mtdLength, mtd.y / mtdLength);
+                    var vn = v.x * mtdNormal.x + v.y * mtdNormal.y;
+                    //moving away already
+                    if (vn > 0.0) {
+                        continue;
+                    }
+                    var constantRestitution = 0.85;
+                    var impulse = new THREE.Vector2(-(1.0 + constantRestitution) * vn / 2 * mtdNormal.x, -(1.0 + constantRestitution) * vn / 2 * mtdNormal.y);
+                    balls[b].velocity = new THREE.Vector2(balls[b].velocity.x + impulse.x, balls[b].velocity.y + impulse.y);
+                    balls[b1].velocity = new THREE.Vector2(balls[b1].velocity.x - impulse.x, balls[b1].velocity.y - impulse.y);
+
+
+
+
+
+
+
+
+var collisionAngle = Math.atan2(balls[b1].position.z - balls[b].position.z, balls[b1].position.x - balls[b].position.x);
+                    var speed1 = Math.sqrt(balls[b].velocity.x * balls[b].velocity.x + balls[b].velocity.y * balls[b].velocity.y);
+                    var speed2 = Math.sqrt(balls[b1].velocity.x * balls[b1].velocity.x + balls[b1].velocity.y * balls[b1].velocity.y);
+
+                    var direction1 = Math.atan2(balls[b].velocity.y, balls[b].velocity.x);
+                    var direction2 = Math.atan2(balls[b1].velocity.y, balls[b1].velocity.x);
+                    var newSpeedX1 = speed1 * Math.cos(direction1 - collisionAngle);
+                    var newSpeedY1 = speed1 * Math.sin(direction1 - collisionAngle);
+                    var newSpeedX2 = speed2 * Math.cos(direction2 - collisionAngle);
+                    var newSpeedY2 = speed2 * Math.sin(direction2 - collisionAngle);
+
+                    var finalSpeedX1 = ((balls[b].mass - balls[b1].mass) * newSpeedX1 + (balls[b1].mass + balls[b1].mass) * newSpeedX2) / (balls[b].mass + balls[b1].mass);
+                    var finalSpeedX2 = ((balls[b].mass + balls[b].mass) * newSpeedX1 + (balls[b1].mass - balls[b].mass) * newSpeedX2) / (balls[b].mass + balls[b1].mass);
+                    var finalSpeedY1 = newSpeedY1;
+                    var finalSpeedY2 = newSpeedY2;
+
+                    var cosAngle = Math.cos(collisionAngle);
+                    var sinAngle = Math.sin(collisionAngle);
+
+                    balls[b].velocity.x = cosAngle * finalSpeedX1 - sinAngle * finalSpeedY1;
+                    balls[b].velocity.y = sinAngle * finalSpeedX1 + cosAngle * finalSpeedY1;
+                    balls[b1].velocity.x = cosAngle * finalSpeedX2 - sinAngle * finalSpeedY2;
+                    balls[b1].velocity.y = sinAngle * finalSpeedX2 + cosAngle * finalSpeedY2;
+
+                    //change position so the balls doesn't collide immediately again
+                    var pos1 = new THREE.Vector2(balls[b].position.x, balls[b].position.z);
+                    var pos2 = new THREE.Vector2(balls[b1].position.x, balls[b1].position.z);
+
+                    var posDifference = new THREE.Vector2(pos1.x - pos2.x, pos1.y - pos2.y);
+                    var d = Math.sqrt(posDifference.x * posDifference.x + posDifference.y * posDifference.y);
+                    var translation = ((balls[b].radius + balls[b1].radius) - d) / d;
+                    var mtd = new THREE.Vector2(posDifference.x * translation, posDifference.y * translation);
+
+                    var im1 = 1 / balls[b].mass;
+                    var im2 = 1 / balls[b1].mass;
+
+                    pos1 = new THREE.Vector2(pos1.x + mtd.x * (im1 / (im1 + im2)), pos1.y + mtd.y * (im1 / (im1 + im2)));
+                    pos2 = new THREE.Vector2(pos2.x - mtd.x * (im2 / (im1 + im2)), pos2.y - mtd.y * (im2 / (im1 + im2)));
+                    balls[b].position.x = pos1.x;
+                    balls[b].position.z = pos1.y;
+                    balls[b1].position.x = pos2.x;
+                    balls[b1].position.z = pos2.y;

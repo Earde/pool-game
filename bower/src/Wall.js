@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 var Wall = (function (_super) {
     __extends(Wall, _super);
     function Wall(w, h, d, color) {
-        var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial({ color: color })) || this;
+        var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), new THREE.MeshPhongMaterial({ color: color })) || this;
         _this.width = 0.5;
         _this.height = 0.5;
         _this.depth = 0.5;
@@ -22,20 +22,12 @@ var Wall = (function (_super) {
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
+        _this.castShadow = false;
+        _this.receiveShadow = true;
         return _this;
     }
     Wall.prototype.getBox = function () {
         return new THREE.Box3(new THREE.Vector3(this.position.x - this.width / 2, this.position.y - this.height / 2, this.position.z - this.depth / 2), new THREE.Vector3(this.position.x + this.width / 2, this.position.y + this.height / 2, this.position.z + this.depth / 2));
-    };
-    Wall.prototype.intersectsWithBox = function (box) {
-        var min = this.getBox().min;
-        var max = this.getBox().max;
-        if (box.max.x <= min.x || box.min.x >= max.x ||
-            box.max.y <= min.y || box.min.y >= max.y ||
-            box.max.z <= min.z || box.min.z >= max.z) {
-            return false;
-        }
-        return true;
     };
     return Wall;
 }(THREE.Mesh));

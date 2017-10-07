@@ -2,17 +2,24 @@
 
 class Ball extends THREE.Mesh{
     public velocity: THREE.Vector2;
+    public mass: number;
 
-    private angle: number = 1;
-    private radius: number = 0.5;
+    private angle: number;
+    private radius: number;
+
+    private deceleration: number = 75;
+
 
     constructor(r: number, color: number) {
-        super(new THREE.SphereGeometry(r), new THREE.MeshBasicMaterial( { color: color } ));
+        super(new THREE.SphereGeometry(r), new THREE.MeshPhongMaterial( { color: color } ));
         this.radius = r;
         this.velocity = new THREE.Vector2(0.0, 0.0);
         this.position.x = 0;
         this.position.y = 0;
         this.position.z = 0;
+        this.angle = 0.0;
+        this.castShadow = true;
+        this.receiveShadow = true;
     }
 
     getAngle() {
@@ -25,9 +32,17 @@ class Ball extends THREE.Mesh{
         this.velocity.y = speed * Math.sin( this.angle * Math.PI / 180 );
     }
 
-    update(delta) {
+    update(delta){
         this.position.x += this.velocity.x * delta;
         this.position.z += this.velocity.y * delta;
+        var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
+        if (length > delta * this.deceleration) {
+            var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
+            this.velocity.x -= friction.x * delta;
+            this.velocity.y -= friction.y * delta;
+        } else {
+            this.velocity = new THREE.Vector2(0, 0);
+        }
     }
 
     getBox() {
@@ -52,11 +67,10 @@ class Ball extends THREE.Mesh{
     intersectsWithBox(box: THREE.Box3) {
         var min = this.getBox().min;
         var max = this.getBox().max;
-        if ( box.max.x <= min.x || box.min.x >= max.x ||
-            box.max.y <= min.y || box.min.y >= max.y ||
-            box.max.z <= min.z || box.min.z >= max.z ) {
-            return false;
+        if (min.x < box.max.x &&  max.x > box.min.x
+        && min.z < box.max.z && max.z > box.min.z) {
+            return true;
         }
-        return true;
+        return false;
     }
 }

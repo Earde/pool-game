@@ -3,7 +3,7 @@
 ///<reference path="Camera.ts" />
 ///<reference path="Ball.ts" />
 ///<reference path="Wall.ts" />
-import Vector2 = THREE.Vector2;
+///<reference path="Light.ts" />
 
 //Three.js init
 var scene = new THREE.Scene();
@@ -11,18 +11,23 @@ var camera = new Camera();
 var renderer = new THREE.WebGLRenderer({ antialias: true });
 var clock = new THREE.Clock();
 var delta = clock.getDelta();
-renderer.setSize( window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild( renderer.domElement );
-
 //balls
 var balls = [];
 balls[0] = new Ball( 0.5, 0xffffff);
+balls[0].position.x = -2;
+balls[0].position.z = -0.5;
+//balls[0].setAngle(0, 10);
 scene.add( balls[0] );
 for (var i = 1; i < 5; i++) {
     balls[i] = new Ball( 0.5, 0x0000ff);
     scene.add( balls[i] );
     balls[i].position.x = i * 2.10;
-    balls[i].setAngle(i * 30, 12.5);
+    balls[i].position.z = i * 0.5;
+    //balls[i].setAngle(i * 60, 5);
 }
 
 //table
@@ -34,7 +39,7 @@ table.position.z = 0;
 
 //wall
 var walls = [];
-var wallThickness = 0.5;
+var wallThickness = 1;
 for (var i = 0; i < 4; i++) {
     walls[i] = new Wall(table.width / 2, balls[0].radius * 2.25, wallThickness, 0xff0000);
     scene.add(walls[i]);
@@ -59,6 +64,21 @@ walls[4].position.x = -table.width / 2;
 walls[4].position.z = 0;
 walls[5].position.x = table.width / 2;
 walls[5].position.z = 0;
+
+//light
+var ambLight = new THREE.AmbientLight(0xffffff, 0.65);
+scene.add(ambLight);
+var lightHeight = 10;
+var lights = [];
+for (var i = 0; i < 4; i++) {
+    lights[i] = new Light(0, 0, 0, 0xfff1e0);
+    scene.add(lights[i]);
+}
+var lightFromTable = 1.25;
+lights[0].position.set(-table.depth * lightFromTable, lightHeight, -table.depth * lightFromTable);
+lights[1].position.set(-table.depth * lightFromTable, lightHeight, table.depth * lightFromTable);
+lights[2].position.set(table.depth * lightFromTable, lightHeight, table.depth * lightFromTable );
+lights[3].position.set(table.depth * lightFromTable, lightHeight, -table.depth * lightFromTable);
 
 //keyboard
 var keyMap = [];
@@ -95,56 +115,53 @@ function onDocumentMouseUp(event) {
 //game functions
 function checkForWallsAndBalls() {
     for (var b = 0; b < balls.length; b++) {
+        //check for walls and bounce back if colliding
+        for (var i = 0; i < walls.length; i++) {
+            if (balls[b].intersectsWithBox(walls[i].getBox(), i)) {
+                if (i >= 4) {
+                    balls[b].velocity.x *= -1;
+                } else {
+                    balls[b].velocity.y *= -1;
+                }
+                balls[b].update(delta);
+            }
+        }
         //check for other balls
         for (var b1 = b + 1; b1 < balls.length; b1++) {
             if (balls[b].intersectsWithBox(balls[b1].getBox())) {
                 if (balls[b].intersectsWithBall(balls[b1].getSphere())) {
-                    //http://jsfiddle.net/inkfood/juzsR/
-                    //https://blogs.msdn.microsoft.com/faber/2013/01/09/elastic-collisions-of-balls/
-
-                    //calculate collision angle + speed of ball
-                    var collisionAngle = Math.atan2(balls[b1].position.y - balls[b].position.y, balls[b1].position.x - balls[b].position.x);
-                    var speed1 = Math.sqrt(balls[b].x * balls[b].x + balls[b].y * balls[b].y);
-                    var speed2 = Math.sqrt(balls[b1].x * balls[b1].x + balls[b1].y * balls[b1].y);
-                    var direction1 = Math.atan2(balls[b].velocity.y, balls[b].velocity.x);
-                    var direction2 = Math.atan2(balls[b1].velocity.y, balls[b1].velocity.x);
-                    var newSpeedX1 = speed1 * Math.cos(direction1 - collisionAngle);
-                    var newSpeedY1 = speed1 * Math.sin(direction1 - collisionAngle);
-                    var newSpeedX2 = speed2 * Math.cos(direction2 - collisionAngle);
-                    var newSpeedY2 = speed2 * Math.sin(direction2 - collisionAngle);
-                    //possible to include mass of ball here
-                    var finalSpeedX1 = newSpeedX2;
-                    var finalSpeedX2 = newSpeedX1;
-                    var finalSpeedY1 = newSpeedY1;
-                    var finalSpeedY2 = newSpeedY2;
-                    //calculate new velocities
-                    var cosAngle = Math.cos(collisionAngle);
-                    var sinAngle = Math.sin(collisionAngle);
-                    balls[b].velocity.x = cosAngle * finalSpeedX1 - sinAngle * finalSpeedY1;
-                    balls[b].velocity.y = sinAngle * finalSpeedX1 + cosAngle * finalSpeedY1;
-                    balls[b1].velocity.x = cosAngle * finalSpeedX2 - sinAngle * finalSpeedY2;
-                    balls[b1].velocity.y = sinAngle * finalSpeedX2 + cosAngle * finalSpeedY2;
-                    //push ball away from each other so they don't collide immediately again
-                    var difference = new THREE.Vector2(balls[b].position.x - balls[b1].position.x, balls[b].position.y - balls[b1].position.y);
+                    var difference = new THREE.Vector2(balls[b].position.x - balls[b1].position.x, balls[b].position.z - balls[b1].position.z);
                     var length = Math.sqrt(difference.x * difference.x + difference.y * difference.y);
                     var translation = ((balls[b].radius + balls[b1].radius) - length) / length;
-                    var mtd = new THREE.Vector2(difference.x * translation * 0.5, difference.y * translation * 0.5);
+                    var mtd = new THREE.Vector2(difference.x * translation, difference.y * translation);
                     balls[b].position.x += mtd.x;
-                    balls[b].position.y += mtd.y;
+                    balls[b].position.z += mtd.y;
                     balls[b1].position.x -= mtd.x;
-                    balls[b1].position.y -= mtd.y;
+                    balls[b1].position.z -= mtd.y;
+                    var v = new THREE.Vector2(balls[b].velocity.x - balls[b1].velocity.x, balls[b].velocity.y - balls[b1].velocity.y);
+                    var mtdLength = Math.sqrt(mtd.x * mtd.x + mtd.y * mtd.y);
+                    var mtdNormal = new THREE.Vector2(mtd.x / mtdLength, mtd.y / mtdLength);
+                    var vn = v.x * mtdNormal.x + v.y * mtdNormal.y;
+                    //moving away already
+                    if (vn > 0.0) {
+                        continue;
+                    }
+                    var constantRestitution = 0.85;
+                    var impulse = new THREE.Vector2(-(1.0 + constantRestitution) * vn / 2 * mtdNormal.x, -(1.0 + constantRestitution) * vn / 2 * mtdNormal.y);
+                    balls[b].velocity = new THREE.Vector2(balls[b].velocity.x + impulse.x, balls[b].velocity.y + impulse.y);
+                    balls[b1].velocity = new THREE.Vector2(balls[b1].velocity.x - impulse.x, balls[b1].velocity.y - impulse.y);
+
+                    //prevent ball from getting stuck in wall
+                    for (var i = 0; i < walls.length; i++) {
+                        if (balls[b].intersectsWithBox(walls[i].getBox(), i)) {
+                            if (i >= 4) {
+                                balls[b].velocity.x *= -1;
+                            } else {
+                                balls[b].velocity.y *= -1;
+                            }
+                        }
+                    }
                 }
-            }
-        }
-        //check for walls and bounce back if colliding
-        for (var i = 0; i < walls.length; i++) {
-            if (balls[b].intersectsWithBox(walls[i].getBox())) {
-                if (i >= 4) {
-                    balls[b].velocity.x = -balls[b].velocity.x;
-                } else {
-                    balls[b].velocity.y = -balls[b].velocity.y;
-                }
-                balls[b].update(delta);
             }
         }
     }
@@ -153,11 +170,17 @@ function checkForWallsAndBalls() {
 //game handler
 function ProcessGame() {
     delta = clock.getDelta();
+    if (keyMap[32]) {
+        if (balls[0].velocity.x == 0 && balls[0].velocity.y == 0) {
+            var collisionAngle = Math.atan2(balls[0].position.z - camera.position.z, balls[0].position.x - camera.position.x) * 180 / Math.PI;
+            balls[0].setAngle(collisionAngle, 10);
+        }
+    }
+    checkForWallsAndBalls();
     //move balls based on time between frames
     for (var i = 0; i < balls.length; i++) {
         balls[i].update(delta);
     }
-    checkForWallsAndBalls();
     //hold mouse button to move camera
     camera.update(mouseX, mouseY, balls[0], keyMap , delta);
     //reset mouse movement
