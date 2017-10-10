@@ -1,11 +1,10 @@
 ///<reference path="../typings/index.d.ts" />
 
 class Light extends THREE.PointLight{
-    constructor(x: number, y: number, z: number, color: number) {
-        super(color, 0.25, 0, 2);
-        this.position.x = x;
-        this.position.y = y;
-        this.position.z = z;
+    constructor(color: number, intensity: number) {
+        //super(color, 5, 0, Math.PI / 3, 0, 2); spotlight
+        super(color, intensity, 0, 2);
+        this.lookAt(new THREE.Vector3(0, 0, 0));
         this.shadow.mapSize = new THREE.Vector2(2048, 2048);
         this.castShadow = true;
         this.receiveShadow = false;

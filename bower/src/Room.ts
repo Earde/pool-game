@@ -1,6 +1,6 @@
 ///<reference path="../typings/index.d.ts" />
 
-class Wall extends THREE.Mesh{
+class Room extends THREE.Mesh{
     width: number;
     height: number;
     depth: number;
@@ -13,12 +13,7 @@ class Wall extends THREE.Mesh{
         this.position.x = 0;
         this.position.y = 0;
         this.position.z = 0;
-        this.castShadow = true;
+        this.castShadow = false;
         this.receiveShadow = true;
-    }
-
-    getBox() {
-        return new THREE.Box3(new THREE.Vector3(this.position.x - this.width / 2, this.position.y - this.height / 2, this.position.z - this.depth / 2),
-            new THREE.Vector3(this.position.x + this.width / 2, this.position.y + this.height / 2, this.position.z + this.depth / 2))
     }
 }

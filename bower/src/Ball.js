@@ -9,11 +9,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Ball = (function (_super) {
+var Ball = /** @class */ (function (_super) {
     __extends(Ball, _super);
-    function Ball(r, color) {
-        var _this = _super.call(this, new THREE.SphereGeometry(r), new THREE.MeshPhongMaterial({ color: color })) || this;
-        _this.deceleration = 75;
+    function Ball(r, material) {
+        var _this = _super.call(this, new THREE.SphereGeometry(r, 32, 24, 0, Math.PI * 2, 0, Math.PI), material) || this;
+        _this.deceleration = 65;
+        _this.rotationAngle = 0;
         _this.radius = r;
         _this.velocity = new THREE.Vector2(0.0, 0.0);
         _this.position.x = 0;
@@ -33,8 +34,6 @@ var Ball = (function (_super) {
         this.velocity.y = speed * Math.sin(this.angle * Math.PI / 180);
     };
     Ball.prototype.update = function (delta) {
-        this.position.x += this.velocity.x * delta;
-        this.position.z += this.velocity.y * delta;
         var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
         if (length > delta * this.deceleration) {
             var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
@@ -44,6 +43,10 @@ var Ball = (function (_super) {
         else {
             this.velocity = new THREE.Vector2(0, 0);
         }
+        this.position.x += this.velocity.x * delta;
+        this.position.z += this.velocity.y * delta;
+        this.rotation.x += this.velocity.x * delta;
+        this.rotation.z += this.velocity.y * delta;
     };
     Ball.prototype.getBox = function () {
         return new THREE.Box3(new THREE.Vector3(this.position.x - this.radius, this.position.y - this.radius, this.position.z - this.radius), new THREE.Vector3(this.position.x + this.radius, this.position.y + this.radius, this.position.z + this.radius));

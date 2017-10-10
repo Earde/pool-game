@@ -9,13 +9,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Light = (function (_super) {
+var Light = /** @class */ (function (_super) {
     __extends(Light, _super);
-    function Light(x, y, z, color) {
-        var _this = _super.call(this, color, 0.25, 0, 2) || this;
-        _this.position.x = x;
-        _this.position.y = y;
-        _this.position.z = z;
+    function Light(color, intensity) {
+        var _this = 
+        //super(color, 5, 0, Math.PI / 3, 0, 2); spotlight
+        _super.call(this, color, intensity, 0, 2) || this;
+        _this.lookAt(new THREE.Vector3(0, 0, 0));
         _this.shadow.mapSize = new THREE.Vector2(2048, 2048);
         _this.castShadow = true;
         _this.receiveShadow = false;

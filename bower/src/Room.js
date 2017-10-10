@@ -9,9 +9,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Wall = /** @class */ (function (_super) {
-    __extends(Wall, _super);
-    function Wall(w, h, d, material) {
+var Room = /** @class */ (function (_super) {
+    __extends(Room, _super);
+    function Room(w, h, d, material) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), material) || this;
         _this.width = w;
         _this.height = h;
@@ -19,13 +19,10 @@ var Wall = /** @class */ (function (_super) {
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
-        _this.castShadow = true;
+        _this.castShadow = false;
         _this.receiveShadow = true;
         return _this;
     }
-    Wall.prototype.getBox = function () {
-        return new THREE.Box3(new THREE.Vector3(this.position.x - this.width / 2, this.position.y - this.height / 2, this.position.z - this.depth / 2), new THREE.Vector3(this.position.x + this.width / 2, this.position.y + this.height / 2, this.position.z + this.depth / 2));
-    };
-    return Wall;
+    return Room;
 }(THREE.Mesh));
-//# sourceMappingURL=Wall.js.map
+//# sourceMappingURL=Room.js.map

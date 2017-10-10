@@ -7,11 +7,13 @@ class Ball extends THREE.Mesh{
     private angle: number;
     private radius: number;
 
-    private deceleration: number = 75;
+    private deceleration: number = 65;
+
+    private rotationAngle: number = 0;
 
 
-    constructor(r: number, color: number) {
-        super(new THREE.SphereGeometry(r), new THREE.MeshPhongMaterial( { color: color } ));
+    constructor(r: number, material) {
+        super(new THREE.SphereGeometry(r, 32, 24, 0, Math.PI * 2, 0, Math.PI), material);
         this.radius = r;
         this.velocity = new THREE.Vector2(0.0, 0.0);
         this.position.x = 0;
@@ -33,8 +35,6 @@ class Ball extends THREE.Mesh{
     }
 
     update(delta){
-        this.position.x += this.velocity.x * delta;
-        this.position.z += this.velocity.y * delta;
         var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
         if (length > delta * this.deceleration) {
             var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
@@ -43,6 +43,10 @@ class Ball extends THREE.Mesh{
         } else {
             this.velocity = new THREE.Vector2(0, 0);
         }
+        this.position.x += this.velocity.x * delta;
+        this.position.z += this.velocity.y * delta;
+        this.rotation.x += this.velocity.x * delta;
+        this.rotation.z += this.velocity.y * delta;
     }
 
     getBox() {
