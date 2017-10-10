@@ -17,9 +17,8 @@ class Cue extends THREE.Mesh {
         this.position.x = 0;
         this.position.y = 0;
         this.position.z = 0;
-        this.castShadow = false;
+        this.castShadow = true;
         this.receiveShadow = true;
-        this.material.side = THREE.DoubleSide;
     }
 
     update(spacePressed: boolean, cuePos: THREE.Vector3, cueBallPos: THREE.Vector3, cameraPos: THREE.Vector3) {

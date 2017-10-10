@@ -26,9 +26,8 @@ var Cue = /** @class */ (function (_super) {
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
-        _this.castShadow = false;
+        _this.castShadow = true;
         _this.receiveShadow = true;
-        _this.material.side = THREE.DoubleSide;
         return _this;
     }
     Cue.prototype.update = function (spacePressed, cuePos, cueBallPos, cameraPos) {

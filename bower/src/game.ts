@@ -1,11 +1,10 @@
 ///<reference path="../typings/index.d.ts" />
-///<reference path="Camera.ts" />
+///<reference path="Cue.ts" />
 ///<reference path="Camera.ts" />
 ///<reference path="Ball.ts" />
 ///<reference path="Room.ts" />
 ///<reference path="Wall.ts" />
 ///<reference path="Light.ts" />
-///<reference path="Cue.ts" />
 
 //Three.js init
 var scene = new THREE.Scene();
@@ -39,11 +38,11 @@ balls[0].position.y = 0;
 balls[0].position.z = 0;
 //balls[0].setAngle(0, 10);
 scene.add( balls[0] );
-for (var i = 1; i < 16; i++) {
+for (var i = 1; i < 12; i++) {
     balls[i] = new Ball(0.5, setTexture("Ball" + i.toString() + ".jpg", 1, 1));
     scene.add( balls[i] );
-    balls[i].position.x = (i - 8) * 0.6;
-    balls[i].position.z = (i - 8) * 0.6;
+    balls[i].position.x = (i - 6) * 1.0;
+    balls[i].position.z = (i - 6) * 1.0;
     //balls[i].setAngle(i * 60, 5);
 }
 
