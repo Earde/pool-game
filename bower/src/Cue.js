@@ -12,8 +12,8 @@ var __extends = (this && this.__extends) || (function () {
 var Cue = /** @class */ (function (_super) {
     __extends(Cue, _super);
     function Cue(ballRadius, material) {
-        var _this = _super.call(this, new THREE.CylinderGeometry(0.1, 0.35, (12 - ballRadius), 8, 1, false, 0, Math.PI * 2), material) || this;
-        _this.cueStartDistance = 12;
+        var _this = _super.call(this, new THREE.CylinderGeometry(0.1, 0.35, (10 - ballRadius), 8, 1, false, 0, Math.PI * 2), material) || this;
+        _this.cueStartDistance = 10;
         _this.cueMoveDistance = 0;
         _this.cueMoveDistanceMax = 5;
         _this.cueAwayFromBall = 2;
@@ -23,6 +23,8 @@ var Cue = /** @class */ (function (_super) {
         _this.cuePowerMax = 15;
         _this.cueTriggeringSpeed = 3;
         _this.cueShotSpeed = 20;
+        _this.player = 0;
+        _this.playerMax = 2;
         _this.position.x = 0;
         _this.position.y = 0;
         _this.position.z = 0;
@@ -58,6 +60,12 @@ var Cue = /** @class */ (function (_super) {
             this.cueMoveDistance = 0;
             this.triggering = false;
             this.shot = false;
+            if (this.player >= this.playerMax) {
+                this.player++;
+            }
+            else {
+                this.player = 0;
+            }
         }
     };
     return Cue;

@@ -1,7 +1,7 @@
 ﻿///<reference path="../typings/index.d.ts" />
 
 class Cue extends THREE.Mesh {
-    cueStartDistance = 12;
+    cueStartDistance = 10;
     cueMoveDistance = 0;
     cueMoveDistanceMax = 5;
     cueAwayFromBall = 2;
@@ -11,9 +11,11 @@ class Cue extends THREE.Mesh {
     cuePowerMax = 15;
     cueTriggeringSpeed = 3;
     cueShotSpeed = 20;
+    player = 0;
+    playerMax = 2;
 
     constructor(ballRadius: number, material: THREE.Material) {
-        super(new THREE.CylinderGeometry(0.1, 0.35, (12 - ballRadius), 8, 1, false, 0, Math.PI * 2), material);
+        super(new THREE.CylinderGeometry(0.1, 0.35, (10 - ballRadius), 8, 1, false, 0, Math.PI * 2), material);
         this.position.x = 0;
         this.position.y = 0;
         this.position.z = 0;
@@ -46,6 +48,11 @@ class Cue extends THREE.Mesh {
             this.cueMoveDistance = 0;
             this.triggering = false;
             this.shot = false;
+            if (this.player >= this.playerMax) {
+                this.player++;
+            } else {
+                this.player = 0;
+            }
         }
     }
 }

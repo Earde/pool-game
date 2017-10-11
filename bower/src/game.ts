@@ -17,29 +17,34 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild( renderer.domElement );
 
-function setTexture(name, setX, setY) {
+function setTexture(name, setX, setY, phong) {
     var texture = new THREE.TextureLoader().load("textures/" + name);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(setX, setY);
-    var material = new THREE.MeshPhongMaterial();
+    texture.generateMipmaps = true;
+    var material;
+    if (phong) {
+        material = new THREE.MeshPhongMaterial();
+    } else {
+        material = new THREE.MeshBasicMaterial();
+    }
     material.map = texture;
     material.side = THREE.DoubleSide;
-    //material.depthWrite = false;
     material.needsUpdate = true;
     return material;
 }
 
 //balls
 var balls = [];
-balls[0] = new Ball(0.5, setTexture("BallCue.jpg", 1, 1));
+balls[0] = new Ball(0.5, setTexture("BallCue.jpg", 1, 1, true));
 balls[0].position.x = 3;
 balls[0].position.y = 0;
 balls[0].position.z = 0;
 //balls[0].setAngle(0, 10);
 scene.add( balls[0] );
 for (var i = 1; i < 12; i++) {
-    balls[i] = new Ball(0.5, setTexture("Ball" + i.toString() + ".jpg", 1, 1));
+    balls[i] = new Ball(0.5, setTexture("Ball" + i.toString() + ".jpg", 1, 1, true));
     scene.add( balls[i] );
     balls[i].position.x = (i - 6) * 1.0;
     balls[i].position.z = (i - 6) * 1.0;
@@ -47,30 +52,35 @@ for (var i = 1; i < 12; i++) {
 }
 
 //cue
-var cue = new Cue(balls[0].radius, setTexture("roomCeiling.jpg", 1, 1));
+var cue = new Cue(balls[0].radius, setTexture("cueWood.jpg", 1, 1, true));
 scene.add(cue);
 
 //table
-var table = new Wall(25.3, 8.0, 14.2, setTexture("poolTable.jpg", 2, 1));
+var table = new Wall(25.3, 0.1, 14.2, setTexture("poolTable.jpg", 2, 1, true));
 scene.add(table);
-table.position.set(0, -(table.height / 2 + balls[0].radius), 0);
+table.position.set(0, -table.height / 2 - balls[0].radius, 0);
+
+//table legs
+var legs = new Wall(table.width, 8.9, table.depth, setTexture("roomCeiling.jpg", 2, 1, true));
+scene.add(legs);
+legs.position.set(0, -legs.height / 2 + table.position.y, 0);
 
 //floor
 var roomSize = 200;
-var roomHeight = roomSize / 2;
-var xSets = Math.round(roomSize / 100) * 2;
-var ySets = Math.round(roomHeight / 100) * 2;
-var floor = new Room(roomSize, 0.1, roomSize, setTexture("roomFloor.jpg", xSets, xSets));
+var roomHeight = roomSize / 4;
+var xSets = Math.round(roomSize / 50);
+var ySets = Math.round(roomHeight / 50);
+var floor = new Room(roomSize, 0.1, roomSize, setTexture("roomFloor.jpg", xSets, xSets, true));
 scene.add(floor);
-floor.position.set(0, table.position.y - table.height / 2, 0);
+floor.position.set(0, legs.position.y - legs.height / 2, 0);
 
 //room
 var roomWalls = [];
 for (var i = 0; i < 2; i++) {
-    roomWalls[i] = new Room(roomSize, roomHeight, 0.1, setTexture("roomWall.jpg", xSets, ySets));
+    roomWalls[i] = new Room(roomSize, roomHeight, 0.1, setTexture("roomWall.jpg", xSets, ySets, true));
 }
 for (var i = 2; i < 4; i++) {
-    roomWalls[i] = new Room(0.1, roomHeight, roomSize, setTexture("roomWall.jpg", xSets, ySets));
+    roomWalls[i] = new Room(0.1, roomHeight, roomSize, setTexture("roomWall.jpg", xSets, ySets, true));
 }
 for (var i = 0; i < 4; i++) {
     scene.add(roomWalls[i]);
@@ -81,20 +91,21 @@ roomWalls[2].position.set(floor.width / 2, floor.position.y + roomHeight / 2, 0)
 roomWalls[3].position.set(-floor.width / 2, floor.position.y + roomHeight / 2, 0);
 
 //ceiling
-var ceiling = new Room(roomSize, 0.1, roomSize, setTexture("roomCeiling.jpg", xSets, xSets));
+var ceiling = new Room(roomSize, 0.1, roomSize, setTexture("roomCeiling.jpg", xSets, xSets, false));
 scene.add(ceiling);
-ceiling.position.set(0, roomHeight / 2 - table.height / 2, 0);
+ceiling.receiveShadow = false;
+ceiling.position.set(0, roomHeight / 2 + roomWalls[0].position.y, 0);
 
-//wall
+//table walls
 var walls = [];
 var wallThickness = 1;
 for (var i = 0; i < 4; i++) {
-    walls[i] = new Wall(table.width / 2, balls[0].radius * 2.25, wallThickness, setTexture("roomFloor.jpg", 1, 1));
+    walls[i] = new Wall(table.width / 2, balls[0].radius * 2.25, wallThickness, setTexture("tableWood.jpg", 2, 1, true));
     scene.add(walls[i]);
     walls[i].position.y = 0;
 }
 for (var i = 4; i < 6; i++) {
-    walls[i] = new Wall(wallThickness, balls[0].radius * 2.25, table.depth, setTexture("roomFloor.jpg", 1, 1));
+    walls[i] = new Wall(wallThickness, balls[0].radius * 2.25, table.depth, setTexture("tableWood.jpg", 2, 1, true));
     scene.add(walls[i]);
     walls[i].position.y = 0;
 }
@@ -109,7 +120,7 @@ walls[5].position.set(table.width / 2, 0, 0);
 
 //light
 var lightOffset = 0.8;
-var lightHeight = (roomWalls[0].height - roomWalls[0].position.y) * lightOffset;
+var lightHeight = (ceiling.position.y + ceiling.height) * lightOffset;
 var lightColor = 0xfff1e0;
 
 var ambLight = new THREE.AmbientLight(lightColor, 0.3);
@@ -117,12 +128,12 @@ scene.add(ambLight);
 
 var lights = [];
 for (var i = 0; i < 5; i++) {
-    lights[i] = new Light(0xfff1e0, 0.15);
+    lights[i] = new Light(0xfff1e0, 0.2);
     scene.add(lights[i]);
 }
 
 lights[0].position.set(0, lightHeight, 0);
-lights[0].intensity = 0.3;
+lights[0].intensity = 0.30;
 lights[1].position.set(-floor.depth * lightOffset, lightHeight, -floor.depth * lightOffset);
 lights[2].position.set(-floor.depth * lightOffset, lightHeight, floor.depth * lightOffset);
 lights[3].position.set(floor.depth * lightOffset, lightHeight, floor.depth * lightOffset );
@@ -240,6 +251,7 @@ function ProcessGame() {
         }
     }
     if (allBallsNotMoving) {
+        cue.player;
         cue.update(keyMap[32], camera.getCuePosition(balls[0].position, (cue.cueStartDistance + cue.cueAwayFromBall - balls[0].radius) / 2 + cue.cueMoveDistance), balls[0].position, camera.position);
     } else {
         cue.visible = false;
