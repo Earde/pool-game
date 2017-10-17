@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Camera = /** @class */ (function (_super) {
+var Camera = (function (_super) {
     __extends(Camera, _super);
     function Camera() {
         var _this = _super.call(this, 90, window.innerWidth / window.innerHeight, 0.1, 1000) || this;
@@ -20,10 +20,9 @@ var Camera = /** @class */ (function (_super) {
         _this.radius = 20.0;
         _this.minAngleY = 20;
         _this.maxAngleY = 70.0;
-        _this.position.z = 5;
         return _this;
     }
-    Camera.prototype.update = function (ballPos, mouseX, mouseY, ball, keyMap, delta) {
+    Camera.prototype.update = function (ballPos, mouseX, mouseY) {
         this.angleX -= mouseX * this.cameraSpeedX;
         this.angleY += mouseY * this.cameraSpeedY;
         this.angleY = Math.min(this.maxAngleY, Math.max(this.minAngleY, this.angleY));
@@ -32,7 +31,7 @@ var Camera = /** @class */ (function (_super) {
         camera.position.y = ballPos.y + this.radius * Math.sin(this.angleY * Math.PI / 180);
         camera.position.z = ballPos.z + this.radius * Math.cos(this.angleX * Math.PI / 180)
             * Math.cos(this.angleY * Math.PI / 180);
-        camera.lookAt(ball.position);
+        camera.lookAt(ballPos);
         camera.updateMatrix();
     };
     Camera.prototype.getCuePosition = function (ballPos, r) {

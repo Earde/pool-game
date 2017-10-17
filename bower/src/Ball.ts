@@ -2,26 +2,27 @@
 
 class Ball extends THREE.Mesh{
     public velocity: THREE.Vector2;
-    public mass: number;
 
     private angle: number;
     private radius: number;
 
     private deceleration: number = 65;
 
-    private rotationAngle: number = 0;
-
+    hit: boolean;
 
     constructor(r: number, material) {
-        super(new THREE.SphereGeometry(r, 32, 24, 0, Math.PI * 2, 0, Math.PI), material);
+        super(new THREE.SphereGeometry(r, 24, 18, 0, Math.PI * 2, 0, Math.PI), material);
         this.radius = r;
         this.velocity = new THREE.Vector2(0.0, 0.0);
-        this.position.x = 0;
-        this.position.y = 0;
-        this.position.z = 0;
-        this.angle = 0.0;
         this.castShadow = true;
         this.receiveShadow = true;
+        this.hit = false;
+    }
+
+    resetWhiteBall(width) {
+        this.hit = false;
+        this.position.set(-(width / 2) + width / 4, 0, 0);
+        this.velocity = new THREE.Vector2(0, 0);
     }
 
     getAngle() {
@@ -34,19 +35,25 @@ class Ball extends THREE.Mesh{
         this.velocity.y = speed * Math.sin( this.angle * Math.PI / 180 );
     }
 
-    update(delta){
-        var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
-        if (length > delta * this.deceleration) {
-            var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
-            this.velocity.x -= friction.x * delta;
-            this.velocity.y -= friction.y * delta;
-        } else {
+    update(delta) {
+        if (this.velocity.x != 0 && this.velocity.y != 0 && !this.hit) {
+            var length = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
+            if (length > delta * this.deceleration) {
+                var friction = new THREE.Vector2(this.velocity.x / length, this.velocity.y / length);
+                this.velocity.x -= friction.x * delta;
+                this.velocity.y -= friction.y * delta;
+            } else {
+                this.velocity = new THREE.Vector2(0, 0);
+            }
+            this.position.x += this.velocity.x * delta;
+            this.position.z += this.velocity.y * delta;
+            //dit klopt niet inderdaad maarja
+            this.rotation.x += this.velocity.y * delta;
+            this.rotation.z -= this.velocity.x * delta;
+        }
+        else {
             this.velocity = new THREE.Vector2(0, 0);
         }
-        this.position.x += this.velocity.x * delta;
-        this.position.z += this.velocity.y * delta;
-        this.rotation.x += this.velocity.x * delta;
-        this.rotation.z += this.velocity.y * delta;
     }
 
     getBox() {
@@ -61,8 +68,9 @@ class Ball extends THREE.Mesh{
     intersectsWithBall(ball: THREE.Sphere) {
         var xd = this.position.x - ball.center.x;
         var yd = this.position.y - ball.center.y;
-        var distance = Math.sqrt(xd * xd + yd * yd);
-        if (distance < this.radius + ball.radius) {
+        var distance2 = xd * xd + yd * yd;
+        var r = this.radius + ball.radius;
+        if (distance2 <= r * r) {
             return true;
         }
         return false;

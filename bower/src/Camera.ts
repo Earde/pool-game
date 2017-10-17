@@ -11,10 +11,9 @@ class Camera extends THREE.PerspectiveCamera{
 
     constructor() {
         super(90, window.innerWidth / window.innerHeight, 0.1, 1000);
-        this.position.z = 5;
     }
 
-    update(ballPos: THREE.Vector3, mouseX, mouseY, ball: THREE.Mesh, keyMap: Array<number>, delta) {
+    update(ballPos: THREE.Vector3, mouseX, mouseY) {
         this.angleX -= mouseX * this.cameraSpeedX;
         this.angleY += mouseY * this.cameraSpeedY;
         this.angleY = Math.min( this.maxAngleY, Math.max( this.minAngleY, this.angleY ) );
@@ -23,7 +22,7 @@ class Camera extends THREE.PerspectiveCamera{
         camera.position.y = ballPos.y + this.radius * Math.sin( this.angleY * Math.PI / 180 );
         camera.position.z = ballPos.z + this.radius * Math.cos( this.angleX * Math.PI / 180 )
             * Math.cos( this.angleY * Math.PI / 180 );
-        camera.lookAt(ball.position);
+        camera.lookAt(ballPos);
         camera.updateMatrix();
     }
 

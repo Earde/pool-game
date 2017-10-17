@@ -9,10 +9,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Cue = /** @class */ (function (_super) {
+var Cue = (function (_super) {
     __extends(Cue, _super);
-    function Cue(ballRadius, material) {
-        var _this = _super.call(this, new THREE.CylinderGeometry(0.1, 0.35, (10 - ballRadius), 8, 1, false, 0, Math.PI * 2), material) || this;
+    function Cue(ballRadius, materialHalf, materialFull) {
+        var _this = _super.call(this, new THREE.CylinderGeometry(0.1, 0.35, (10 - ballRadius), 8, 1, false, 0, Math.PI * 2), materialFull) || this;
         _this.cueStartDistance = 10;
         _this.cueMoveDistance = 0;
         _this.cueMoveDistanceMax = 5;
@@ -20,24 +20,33 @@ var Cue = /** @class */ (function (_super) {
         _this.triggering = false;
         _this.shot = false;
         _this.cuePower = 0;
-        _this.cuePowerMax = 15;
+        _this.cuePowerMax = 40;
         _this.cueTriggeringSpeed = 3;
-        _this.cueShotSpeed = 20;
-        _this.player = 0;
-        _this.playerMax = 2;
-        _this.position.x = 0;
-        _this.position.y = 0;
-        _this.position.z = 0;
+        _this.cueShotSpeed = 15;
+        _this.halfMaterial = materialHalf;
+        _this.fullMaterial = materialFull;
         _this.castShadow = true;
         _this.receiveShadow = true;
+        _this.isHalf = false;
+        _this.oldMaterial = false;
         return _this;
     }
-    Cue.prototype.update = function (spacePressed, cuePos, cueBallPos, cameraPos) {
-        cue.visible = true;
-        cue.position.set(cuePos.x, cuePos.y, cuePos.z);
-        cue.lookAt(new THREE.Vector3(cueBallPos.x, cueBallPos.y - balls[0].radius / 3, balls[0].position.z));
-        cue.rotateX(Math.PI / 2);
-        cue.updateMatrix();
+    Cue.prototype.update = function (spacePressed, cuePos, cueBall, cameraPos) {
+        if (this.isHalf && !this.oldMaterial) {
+            this.oldMaterial = this.isHalf;
+            this.material = this.halfMaterial;
+            this.material.needsUpdate = true;
+        }
+        else if (!this.isHalf && this.oldMaterial) {
+            this.oldMaterial = this.isHalf;
+            this.material = this.fullMaterial;
+            this.material.needsUpdate = true;
+        }
+        this.visible = true;
+        this.position.set(cuePos.x, cuePos.y, cuePos.z);
+        this.lookAt(new THREE.Vector3(cueBall.position.x, cueBall.position.y - cueBall.radius / 3, cueBall.position.z));
+        this.rotateX(Math.PI / 2);
+        this.updateMatrix();
         if (!this.shot && spacePressed) {
             this.triggering = true;
             this.cueMoveDistance += this.cueTriggeringSpeed * delta;
@@ -54,18 +63,12 @@ var Cue = /** @class */ (function (_super) {
             this.cueMoveDistance -= this.cueShotSpeed * delta;
         }
         else if (this.shot) {
-            var collisionAngle = Math.atan2(cueBallPos.z - cameraPos.z, cueBallPos.x - cameraPos.x) * 180 / Math.PI;
-            balls[0].setAngle(collisionAngle, this.cuePower);
+            var collisionAngle = Math.atan2(cueBall.position.z - cameraPos.z, cueBall.position.x - cameraPos.x) * 180 / Math.PI;
+            cueBall.setAngle(collisionAngle, this.cuePower);
             this.cuePower = 0;
             this.cueMoveDistance = 0;
             this.triggering = false;
             this.shot = false;
-            if (this.player >= this.playerMax) {
-                this.player++;
-            }
-            else {
-                this.player = 0;
-            }
         }
     };
     return Cue;

@@ -9,18 +9,20 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Room = /** @class */ (function (_super) {
+var Room = (function (_super) {
     __extends(Room, _super);
     function Room(w, h, d, material) {
         var _this = _super.call(this, new THREE.BoxGeometry(w, h, d), material) || this;
         _this.width = w;
         _this.height = h;
         _this.depth = d;
-        _this.position.x = 0;
-        _this.position.y = 0;
-        _this.position.z = 0;
         _this.castShadow = false;
-        _this.receiveShadow = true;
+        if (material.type == new THREE.MeshPhongMaterial().type) {
+            _this.receiveShadow = true;
+        }
+        else {
+            _this.receiveShadow = false;
+        }
         return _this;
     }
     return Room;

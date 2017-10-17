@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d9dcd7e-6beb-4a6c-8302-18a58f9faefb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower/textures/cueWood1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower/src/GameFunctions.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower/src/Player.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower/src/SceneCreator.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/main.html" afterPath="$PROJECT_DIR$/bower/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Ball.js" afterPath="$PROJECT_DIR$/bower/src/Ball.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Ball.js.map" afterPath="$PROJECT_DIR$/bower/src/Ball.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Ball.ts" afterPath="$PROJECT_DIR$/bower/src/Ball.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Camera.js" afterPath="$PROJECT_DIR$/bower/src/Camera.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Camera.js.map" afterPath="$PROJECT_DIR$/bower/src/Camera.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Camera.ts" afterPath="$PROJECT_DIR$/bower/src/Camera.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Cue.js" afterPath="$PROJECT_DIR$/bower/src/Cue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Cue.js.map" afterPath="$PROJECT_DIR$/bower/src/Cue.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Cue.ts" afterPath="$PROJECT_DIR$/bower/src/Cue.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Light.js" afterPath="$PROJECT_DIR$/bower/src/Light.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Room.js" afterPath="$PROJECT_DIR$/bower/src/Room.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Room.js.map" afterPath="$PROJECT_DIR$/bower/src/Room.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Room.ts" afterPath="$PROJECT_DIR$/bower/src/Room.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Wall.js" afterPath="$PROJECT_DIR$/bower/src/Wall.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Wall.js.map" afterPath="$PROJECT_DIR$/bower/src/Wall.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/Wall.ts" afterPath="$PROJECT_DIR$/bower/src/Wall.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/game.js" afterPath="$PROJECT_DIR$/bower/src/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/game.js.map" afterPath="$PROJECT_DIR$/bower/src/game.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower/src/game.ts" afterPath="$PROJECT_DIR$/bower/src/game.ts" />
@@ -25,31 +40,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="game.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower/src/game.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1071">
+              <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bower/src/game.ts">
+      <file leaf-file-name="SceneCreator.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower/src/SceneCreator.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Light.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bower/src/Light.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+            <state relative-caret-position="1020">
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,46 +75,40 @@
       <file leaf-file-name="Ball.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower/src/Ball.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            <state relative-caret-position="442">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
-                <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-                <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-                <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-                <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
+                <marker date="1508079860974" expanded="true" signature="2535:2601" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wall.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bower/src/Wall.ts">
+      <file leaf-file-name="Cue.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower/src/Cue.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-              <folding>
-                <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-                <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Room.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bower/src/Room.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="408">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tsconfig.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <file leaf-file-name="GameFunctions.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bower/src/GameFunctions.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="58">
+              <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower/src/Player.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -106,8 +117,8 @@
       <file leaf-file-name="Camera.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower/src/Camera.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="442">
+              <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -122,6 +133,12 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>visible</find>
+      <find>].visible</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -139,12 +156,17 @@
         <option value="$PROJECT_DIR$/bower/Ball.ts" />
         <option value="$PROJECT_DIR$/bower/src/oldAlgorithms.txt" />
         <option value="$PROJECT_DIR$/bower/src/Light.ts" />
-        <option value="$PROJECT_DIR$/bower/src/Wall.ts" />
-        <option value="$PROJECT_DIR$/bower/main.html" />
+        <option value="$PROJECT_DIR$/bower/src/gameFunctions.ts" />
         <option value="$PROJECT_DIR$/bower/src/Room.ts" />
+        <option value="$PROJECT_DIR$/bower/src/Wall.ts" />
         <option value="$PROJECT_DIR$/bower/src/Camera.ts" />
-        <option value="$PROJECT_DIR$/bower/src/Ball.ts" />
+        <option value="$PROJECT_DIR$/bower/main.html" />
         <option value="$PROJECT_DIR$/bower/src/game.ts" />
+        <option value="$PROJECT_DIR$/bower/src/Ball.ts" />
+        <option value="$PROJECT_DIR$/bower/src/SceneCreator.ts" />
+        <option value="$PROJECT_DIR$/bower/src/Cue.ts" />
+        <option value="$PROJECT_DIR$/bower/src/Player.ts" />
+        <option value="$PROJECT_DIR$/bower/src/GameFunctions.ts" />
       </list>
     </option>
   </component>
@@ -154,7 +176,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -175,7 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,10 +229,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Light.ts" type="620a8d5e:NestingTreeNode" />
             </path>
+            <path>
+              <item name="pool-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pool-game" type="462c0819:PsiDirectoryNode" />
+              <item name="bower" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -219,13 +247,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projects/game project" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\earde\Documents\pool-game\bower\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\earde\Documents\pool-game\bower\textures" />
       <recent name="C:\Users\earde\Documents\pool-game\bower\src" />
       <recent name="C:\Users\DylanPro\Documents\pool-game\bower\src" />
       <recent name="C:\Users\DylanPro\Desktop\EP\bower\src" />
@@ -281,17 +310,21 @@
       <workItem from="1507471648268" duration="13172000" />
       <workItem from="1507556259027" duration="15813000" />
       <workItem from="1507658917549" duration="62000" />
+      <workItem from="1507898903933" duration="12404000" />
+      <workItem from="1508067987771" duration="14909000" />
+      <workItem from="1508245344945" duration="69000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131893000" />
+    <option name="totallyTimeSpent" value="159275000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19337606" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11510417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23068893" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3988764" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -299,7 +332,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26175213" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25925925" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -342,6 +375,12 @@
         <option value="$PROJECT_DIR$/bower/src/Room.js" />
         <option value="$PROJECT_DIR$/bower/src/Cue.js" />
         <option value="$PROJECT_DIR$/bower/src/Cue.js.map" />
+        <option value="$PROJECT_DIR$/bower/src/gameFunctions.js" />
+        <option value="$PROJECT_DIR$/bower/src/gameFunctions.js.map" />
+        <option value="$PROJECT_DIR$/bower/src/SceneCreator.js.map" />
+        <option value="$PROJECT_DIR$/bower/src/SceneCreator.js" />
+        <option value="$PROJECT_DIR$/bower/src/Player.js.map" />
+        <option value="$PROJECT_DIR$/bower/src/Player.js" />
       </list>
     </option>
   </component>
@@ -350,7 +389,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="81" />
+      <option name="time" value="94" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -367,63 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" column="84" lean-forward="true" selection-start-line="110" selection-start-column="84" selection-end-line="110" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="10" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="10" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/Ball.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding>
-            <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/Wall.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-            <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/Camera.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -431,7 +413,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -448,10 +432,7 @@
         <state relative-caret-position="408">
           <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding>
-            <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
+            <marker date="1508079860974" expanded="true" signature="2535:2601" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -460,10 +441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-            <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -479,7 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -487,7 +463,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
           <caret line="113" column="54" lean-forward="false" selection-start-line="113" selection-start-column="54" selection-end-line="113" selection-end-column="54" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -504,10 +482,7 @@
         <state relative-caret-position="51">
           <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
-            <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
+            <marker date="1508079860974" expanded="true" signature="2535:2601" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -516,10 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-            <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -535,7 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -543,7 +513,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1887">
           <caret line="111" column="25" lean-forward="true" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -560,10 +532,7 @@
         <state relative-caret-position="51">
           <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
-            <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
+            <marker date="1508079860974" expanded="true" signature="2535:2601" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -572,10 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-            <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -591,7 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,7 +563,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="100" column="47" lean-forward="true" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,7 +581,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3050">
           <caret line="122" column="24" lean-forward="true" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -631,7 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -654,14 +621,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/Keyboard.ts" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/oldAlgorithms.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -678,13 +637,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/Light.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/typings/globals/three/index.d.ts">
@@ -695,71 +654,109 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/images.jpg" />
-    <entry file="file://$PROJECT_DIR$/bower/src/Light.ts">
+    <entry file="file://$PROJECT_DIR$/bower/src/roomWall.jpg" />
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
-          <folding />
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower/main.html">
+    <entry file="file://$PROJECT_DIR$/bower/src/Light.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/roomWall.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/Camera.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower/src/Ball.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding>
-            <marker date="1507651516941" expanded="true" signature="1567:1607" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1622:1895" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="1913:1981" ph="{...}" />
-            <marker date="1507651516941" expanded="true" signature="2026:2295" ph="{...}" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/Wall.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <marker date="1507647085465" expanded="true" signature="76:813" ph="{...}" />
-            <marker date="1507647085465" expanded="true" signature="518:811" ph="{...}" />
-          </folding>
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/Room.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="289">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/Camera.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower/src/game.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="1071">
+          <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/Ball.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <marker date="1508079860974" expanded="true" signature="2535:2601" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/textures/cueWood.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/textures/cueWood1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/Cue.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/Player.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/SceneCreator.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower/src/GameFunctions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
           <folding />
         </state>
       </provider>
